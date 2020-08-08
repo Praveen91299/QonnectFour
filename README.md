@@ -4,6 +4,8 @@ A quantum game inspired by the classic board game Connect four.
 
 _A game by Praveen Jayakumar._  
 
+The game format is partially inspired by the Quantum Dojo (https://github.com/amirebrahimi/quantumdojo)  
+
 To play the game, download/clone the repository locally and open `QonnectFour.ipynb` notebook on Jupyter notebooks or other compatible platforms.  
 
 (`QonnectFour.py` and `QonnectFour.ipynb` are required to run the game successfully)  

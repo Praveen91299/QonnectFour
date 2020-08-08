@@ -142,10 +142,21 @@ class QonnectFour:
         return temp
         
     def perform_measurement(self, qubit_pos):
-        
         #check if the column is not full already
+        if type(qubit_pos) != type(2):
+            clear_output()
+            print("Invalid input! Provide an integer for position number")
+            self.disp_game_state()
+            return 0
         if self.coin_array[qubit_pos] == self.columns:
+            clear_output()
             print("Column full, try different move")
+            self.disp_game_state()
+            return 0
+        if qubit_pos >= self.columns:
+            clear_output()
+            print("Column out of bounds! Enter value between 0 and " + str(self.column))
+            self.disp_game_state()
             return 0
         else:
             self.coin_array[qubit_pos] +=1
@@ -241,9 +252,38 @@ class QonnectFour:
         return
     
     def add_gate(self, gate, args):
+        
+        #error handling
+        if type(args) != type([0]):
+            clear_output()
+            print("Invalid positional argument. Please pass an array as a second argument.")
+            self.disp_game_state()
+            return 0
+        if gate not in gates:
+            clear_output()
+            print("Invalid gate. Please use any of the gates from " + str(gates))
+            self.disp_game_state()
+            return 0
+        if len(args) > 1 and gate in gates[:-2]:
+            clear_output()
+            print("Too many arguments for that gate. Enter only one position in list")
+            self.disp_game_state()
+            return 0
+        if gate == gates[-2] and len(args) != 2:
+            clear_output()
+            print("Wrong number of arguments for cx gate. Enter two arguments, control and target in a list")
+            self.disp_game_state()
+            return 0
+        if gate == gates[-1] and len(args) != 3:
+            clear_output()
+            print("Wrong number of arguments for ccx (toffoli) gate. Enter three arguments, control 1, control 2 and target in a list")
+            self.disp_game_state()
+            return 0
         for a in range(len(args)):
             if self.coin_array[args[a]] == self.columns:
+                clear_output()
                 print("Column full, try different move")
+                self.disp_game_state()
                 return 0
         
         #apply corresponding gates/operators
