@@ -1,6 +1,6 @@
 # QonnectFour  
 A quantum game inspired by the classic board game Connect four.  
-(Version 1.0)
+(Version 1.1)
 
 _A game by Praveen Jayakumar._  
 
@@ -18,3 +18,7 @@ This game requires the installation of qiskit, numpy, matplotlib, pillow (PIL)
 
 ## License:
 Made under MIT license. Refer to `license.txt` for details.
+
+## Version details:
+1.1 - Added code to install dependencies, modified adding gates and measurement syntax to resemble qiskit functions  
+1.0 - First edition  
