@@ -1,0 +1,5 @@
+qiskit==0.19.6
+Pillow==7.1.2
+numpy==1.18.1
+matplotlib==3.3.0
+ipython

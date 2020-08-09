@@ -140,8 +140,8 @@ class QonnectFour:
             if np.isclose(self.state.probabilities([a])[0], 0.0, 1e-3) or np.isclose(self.state.probabilities([a])[0], 1.0, 1e-3):
                 temp[a] = 1
         return temp
-        
-    def perform_measurement(self, qubit_pos):
+    
+    def measure(self, qubit_pos):
         #check if the column is not full already
         if type(qubit_pos) != type(2):
             clear_output()
@@ -251,34 +251,81 @@ class QonnectFour:
         self.circuit.barrier()
         return
     
+    def h(self, args):
+        if type(args) != type(2):
+            clear_output()
+            print("Invalid positional argument. Please pass a single position as argument.")
+            self.disp_game_state()
+            return 0
+        self.add_gate('h', [args])
+        return
+    
+    def z(self, args):
+        if type(args) != type(2):
+            clear_output()
+            print("Invalid positional argument. Please pass a single position as argument.")
+            self.disp_game_state()
+            return 0
+        self.add_gate('z', [args])
+        return
+    
+    def x(self, args):
+        if type(args) != type(2):
+            clear_output()
+            print("Invalid positional argument. Please pass a single position as argument.")
+            self.disp_game_state()
+            return 0
+        self.add_gate('x', [args])
+        return
+    
+    def y(self, args):
+        if type(args) != type(2):
+            clear_output()
+            print("Invalid positional argument. Please pass a single position as argument.")
+            self.disp_game_state()
+            return 0
+        self.add_gate('y', [args])
+        return
+    
+    def s(self, args):
+        if type(args) != type(2):
+            clear_output()
+            print("Invalid positional argument. Please pass a single position as argument.")
+            self.disp_game_state()
+            return 0
+        self.add_gate('s', [args])
+        return
+    
+    def t(self, args):
+        if type(args) != type(2):
+            clear_output()
+            print("Invalid positional argument. Please pass a single position as argument.")
+            self.disp_game_state()
+            return 0
+        self.add_gate('t', [args])
+        return
+    
+    def cx(self, arg1, arg2):
+        if type(arg1) != type(2) or type(arg2) != type(2):
+            clear_output()
+            print("Invalid positional argument. Please pass a single position as argument.")
+            self.disp_game_state()
+            return 0
+        self.add_gate('cx', [arg1, arg2])
+        return
+    
+    def ccx(self, arg1, arg2, arg3):
+        if type(arg1) != type(2) or type(arg2) != type(2) or type(arg2) != type(2):
+            clear_output()
+            print("Invalid positional argument. Please pass a single position as argument.")
+            self.disp_game_state()
+            return 0
+        self.add_gate('ccx', [arg1, arg2, arg3])
+        return
+    
     def add_gate(self, gate, args):
         
-        #error handling
-        if type(args) != type([0]):
-            clear_output()
-            print("Invalid positional argument. Please pass an array as a second argument.")
-            self.disp_game_state()
-            return 0
-        if gate not in gates:
-            clear_output()
-            print("Invalid gate. Please use any of the gates from " + str(gates))
-            self.disp_game_state()
-            return 0
-        if len(args) > 1 and gate in gates[:-2]:
-            clear_output()
-            print("Too many arguments for that gate. Enter only one position in list")
-            self.disp_game_state()
-            return 0
-        if gate == gates[-2] and len(args) != 2:
-            clear_output()
-            print("Wrong number of arguments for cx gate. Enter two arguments, control and target in a list")
-            self.disp_game_state()
-            return 0
-        if gate == gates[-1] and len(args) != 3:
-            clear_output()
-            print("Wrong number of arguments for ccx (toffoli) gate. Enter three arguments, control 1, control 2 and target in a list")
-            self.disp_game_state()
-            return 0
+        #check if column full
         for a in range(len(args)):
             if self.coin_array[args[a]] == self.columns:
                 clear_output()
