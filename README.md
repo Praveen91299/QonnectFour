@@ -22,3 +22,7 @@ Anyone is welcome to contribute. To contribute, raise the relevant change as an 
 
 ## License:
 Made under MIT license. Refer to `license.txt` for details.
+
+## Version details:
+1.1 - Added code to install dependencies, modified adding gates and measurement syntax to resemble qiskit functions  
+1.0 - First edition  
