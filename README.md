@@ -1,6 +1,6 @@
 # QonnectFour  
 A quantum game inspired by the classic board game Connect four.  
-(Version 1.0)
+(Version 1.1)
 
 _A game by Praveen Jayakumar._  
 
@@ -10,11 +10,15 @@ To play the game, download/clone the repository locally and open `QonnectFour.ip
 
 (`QonnectFour.py` and `QonnectFour.ipynb` are required to run the game successfully)  
 
-This is a two player game and is to be played on one system (as of version 1.0).  
+As of version 1.1, you can play on multiple devices connected to the same local network. To do so, run the Server.py script in the background on one of the system. Change the Server_IP addresses in the Jupyter notebooks, and the Server.py file to the IPv4 address of the system running the Server.  
+
 Follow instructions given in the Jupyter notebook.
 
 ## Requirements:  
 This game requires the installation of qiskit, numpy, matplotlib, pillow (PIL)   
+
+## Contributing:  
+Anyone is welcome to contribute. To contribute, raise the relevant change as an issue and once you are done, make a pull request.  
 
 ## License:
 Made under MIT license. Refer to `license.txt` for details.
